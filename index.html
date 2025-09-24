@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora de Instrumentação</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
@@ -12,6 +12,13 @@
 
         <div class="card">
             <h2>Defina as Especificações do Instrumento</h2>
+            <div class="input-group">
+                <label for="tipo-sensor">Tipo de Grandeza:</label>
+                <select id="tipo-sensor" onchange="atualizarInterface()">
+                    <option value="pressao">Pressão</option>
+                    <option value="temperatura">Temperatura</option>
+                </select>
+            </div>
             <div class="input-group">
                 <label for="c-min">Corrente Mínima (mA)</label>
                 <input type="number" id="c-min" placeholder="ex: 4">
@@ -21,39 +28,47 @@
                 <input type="number" id="c-max" placeholder="ex: 20">
             </div>
             <div class="input-group">
-                <label for="p-min">Pressão Mínima (bar)</label>
+                <label for="p-min"><span id="label-p-min">Pressão</span> Mínima (<span id="unit-p-min">bar</span>)</label>
                 <input type="number" id="p-min" placeholder="ex: 0">
             </div>
             <div class="input-group">
-                <label for="p-max">Pressão Máxima (bar)</label>
+                <label for="p-max"><span id="label-p-max">Pressão</span> Máxima (<span id="unit-p-max">bar</span>)</label>
                 <input type="number" id="p-max" placeholder="ex: 10">
             </div>
         </div>
 
         <div class="card">
-            <h2>Calcular Corrente a partir da Pressão</h2>
+            <h2>Calcular Corrente</h2>
             <div class="input-group">
-                <label for="p-atual">Digite a Pressão Atual (bar)</label>
-                <input type="number" id="p-atual" placeholder="Valor em bar">
+                <label for="p-atual">Digite a <span id="label-p-atual">Pressão</span> Atual (<span id="unit-p-atual">bar</span>)</label>
+                <input type="number" id="p-atual" placeholder="Insira o valor atual">
             </div>
             <button onclick="calcularCorrente()">Calcular Corrente</button>
         </div>
 
         <div class="card">
-            <h2>Calcular Pressão a partir da Corrente</h2>
+            <h2>Calcular <span id="label-calculo-p">Pressão</span></h2>
             <div class="input-group">
                 <label for="c-atual">Digite a Corrente Atual (mA)</label>
                 <input type="number" id="c-atual" placeholder="Valor em mA">
             </div>
-            <button onclick="calcularPressao()">Calcular Pressão</button>
+            <button onclick="calcularGrandeza()">Calcular <span id="label-botao-p">Pressão</span></button>
         </div>
+
+        <footer>
+            <p>&copy; 2025 - Matheus Lima</p>
+        </footer>
         
-        <div class="resultado-card">
+    </div>
+
+    <div id="popup-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
             <h2>Resultado</h2>
-            <p id="resultado">O resultado aparecerá aqui.</p>
+            <p id="resultado-popup"></p>
         </div>
     </div>
 
-    <script src="javascript/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
