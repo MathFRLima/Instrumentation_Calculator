@@ -66,11 +66,20 @@ function calcularCorrente() {
     const { C_min, C_max, P_min, P_max } = getValores();
     const P_atual = parseFloat(document.getElementById('p-atual').value);
 
+    const tipoSensor = document.getElementById('tipo-sensor').value;
+    const unidade = (tipoSensor === 'pressao') ? 'bar' : '°C';
+
     if (isNaN(C_min) || isNaN(C_max) || isNaN(P_min) || isNaN(P_max) || isNaN(P_atual)) {
         exibirResultado('Erro: Preencha todos os campos corretamente.');
         return;
     }
     
+    // Verifica se a pressão/temperatura atual está dentro da faixa especificada
+    if (P_atual < P_min || P_atual > P_max) {
+        exibirResultado(`Erro: O valor de entrada (${P_atual} ${unidade}) está fora da faixa especificada de ${P_min} a ${P_max} ${unidade}.`);
+        return;
+    }
+
     const bar_para_mA = (((P_atual - P_min) * (C_max - C_min)) / (P_max - P_min)) + C_min;
     exibirResultado(`A corrente deve ser: ${bar_para_mA.toFixed(2)} mA`);
 }
@@ -85,6 +94,12 @@ function calcularGrandeza() {
 
     if (isNaN(C_min) || isNaN(C_max) || isNaN(P_min) || isNaN(P_max) || isNaN(C_atual)) {
         exibirResultado('Erro: Preencha todos os campos corretamente.');
+        return;
+    }
+
+    // Verifica se a corrente atual está dentro da faixa especificada
+    if (C_atual < C_min || C_atual > C_max) {
+        exibirResultado(`Erro: O valor de entrada (${C_atual} mA) está fora da faixa especificada de ${C_min} a ${C_max} mA.`);
         return;
     }
 
