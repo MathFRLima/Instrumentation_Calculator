@@ -17,7 +17,7 @@
                 <select id="tipo-sensor" onchange="atualizarInterface()">
                     <option value="pressao">Pressão</option>
                     <option value="temperatura">Temperatura</option>
-                </select>
+                    <option value="nivel">Nível</option> </select>
             </div>
             <div class="input-group">
                 <label for="c-min">Corrente Mínima (mA)</label>
@@ -38,7 +38,7 @@
         </div>
 
         <div class="card">
-            <h2>Calcular Corrente</h2>
+            <h2>Calcular Corrente a partir de <span id="label-calculo-corrente">Pressão</span></h2>
             <div class="input-group">
                 <label for="p-atual">Digite a <span id="label-p-atual">Pressão</span> Atual (<span id="unit-p-atual">bar</span>)</label>
                 <input type="number" id="p-atual" placeholder="Insira o valor atual">
@@ -47,7 +47,7 @@
         </div>
 
         <div class="card">
-            <h2>Calcular <span id="label-calculo-p">Pressão</span></h2>
+            <h2>Calcular <span id="label-calculo-p">Pressão</span> a partir de Corrente</h2>
             <div class="input-group">
                 <label for="c-atual">Digite a Corrente Atual (mA)</label>
                 <input type="number" id="c-atual" placeholder="Valor em mA">
@@ -58,7 +58,7 @@
         <footer>
             <p>&copy; 2025 - Matheus Lima</p>
         </footer>
-        
+
     </div>
 
     <div id="popup-modal" class="modal">
@@ -68,6 +68,8 @@
             <p id="resultado-popup"></p>
         </div>
     </div>
+
+
 
     <script src="assets/js/script.js"></script>
 </body>
