@@ -1,101 +1,96 @@
-/* ========= Reset simples ========= */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* ========= Layout geral ========= */
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   background: radial-gradient(circle at top, #2e4cff 0, #141628 35%, #050712 100%);
-  display: block;
-  min-height: 100vh;
-  padding: 16px 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   color: #f5f5f5;
 }
 
+/* Container centralizado */
 .container {
-  max-width: 960px;
+  max-width: 600px;
   width: 100%;
-  margin: 0 auto;
+  text-align: center;
 }
 
-/* ========= Títulos ========= */
-h1 {
+/* Títulos centralizados */
+h1, h2 {
   text-align: center;
   color: #ffffff;
-  font-size: 1.6rem;
-  margin-bottom: 18px;
-  letter-spacing: 0.03em;
+}
+
+h1 {
+  margin-bottom: 20px;
 }
 
 h2 {
-  text-align: left;
-  color: #e2e4ff;
-  font-size: 1rem;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
+  font-size: 1.1rem;
 }
 
-/* ========= Cartões ========= */
+/* Cards proporcionais aos campos */
 .card {
   background: rgba(15, 23, 42, 0.96);
-  border: 1px solid rgba(99, 102, 241, 0.4);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  margin-bottom: 20px;
   color: #e5e7eb;
-  padding: 14px 12px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.55);
-  margin-bottom: 14px;
-  backdrop-filter: blur(10px);
+
+  /* largura alinhada com os campos */
+  max-width: 400px;      /* um pouco maior que 350px */
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* ========= Grupos de input ========= */
+/* Grupos de input */
 .input-group {
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
+/* Centraliza texto dos labels e unidades */
 label {
   display: block;
-  margin-bottom: 4px;
-  font-weight: 600;
-  font-size: 0.85rem;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
   color: #c7d2fe;
+  text-align: center;
 }
 
 .unit-label {
   display: block;
-  margin-top: 3px;
-  font-size: 0.75rem;
-  color: #9ca3af;
-}
-
-/* ========= Campos numéricos ========= */
-input[type="number"] {
-  width: 100%;
-  padding: 9px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  font-size: 0.9rem;
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
-}
-
-input[type="number"]::placeholder {
-  color: #6b7280;
+  margin-top: 4px;
   font-size: 0.8rem;
+  color: #9ca3af;
+  text-align: center;
 }
 
-input[type="number"]:focus {
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 1px #6366f1;
-  background: rgba(15, 23, 42, 0.98);
+/* Campos com tamanho original */
+input[type="number"],
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: #111827;
+  color: #f5f5f5;
 }
 
-/* ========= Select moderno ========= */
+/* Limita comprimento dos campos e centraliza */
+.card .input-group input[type="number"],
+.card .input-group select,
+.card .input-group .select-wrapper {
+  max-width: 350px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* Select com wrapper para seta customizada */
 .select-wrapper {
   position: relative;
   display: block;
@@ -103,27 +98,12 @@ input[type="number"]:focus {
 
 .select-wrapper select {
   width: 100%;
-  padding: 9px 38px 9px 10px;
-  border-radius: 8px;
-  border: 1px solid rgba(148, 163, 184, 0.7);
-  background: rgba(15, 23, 42, 0.9);
-  color: #e5e7eb;
-  font-size: 0.9rem;
-  cursor: pointer;
-  appearance: none;
+  padding: 10px 36px 10px 10px; /* espaço para a seta */
   -webkit-appearance: none;
   -moz-appearance: none;
-  transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+  appearance: none;
 }
 
-.select-wrapper select:focus {
-  outline: none;
-  border-color: #6366f1;
-  box-shadow: 0 0 0 1px #6366f1;
-  background: rgba(15, 23, 42, 0.98);
-}
-
-/* Seta customizada do select */
 .select-wrapper::after {
   content: "";
   position: absolute;
@@ -131,22 +111,22 @@ input[type="number"]:focus {
   top: 50%;
   right: 10px;
   transform: translateY(-50%);
-  width: 9px;
-  height: 9px;
+  width: 10px;
+  height: 10px;
   background:
     linear-gradient(45deg, transparent 50%, #a5b4fc 50%) left   /50% 100% no-repeat,
     linear-gradient(-45deg, transparent 50%, #a5b4fc 50%) right /50% 100% no-repeat;
   opacity: 0.9;
 }
 
-/* ========= Switch tipo de cálculo ========= */
+/* Switch centralizado */
 .toggle-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 14px;
-  font-size: 0.85rem;
+  gap: 8px;
+  margin-bottom: 15px;
+  font-size: 0.9rem;
   color: #9ca3af;
 }
 
@@ -173,10 +153,9 @@ input[type="number"]:focus {
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background: radial-gradient(circle at 20% 20%, #4b5563, #111827);
+  background-color: #4b5563;
   transition: 0.25s;
   border-radius: 999px;
-  box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.5);
 }
 
 .slider:before {
@@ -186,121 +165,89 @@ input[type="number"]:focus {
   width: 20px;
   left: 4px;
   bottom: 4px;
-  background: radial-gradient(circle at 30% 30%, #ffffff, #e5e7eb);
+  background-color: #ffffff;
   transition: 0.25s;
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(129, 140, 248, 0.6);
 }
 
 .switch input:checked + .slider {
-  background: radial-gradient(circle at 10% 0%, #22c55e, #16a34a 40%, #064e3b 100%);
-  box-shadow: 0 0 14px rgba(34, 197, 94, 0.6), inset 0 0 0 1px rgba(22, 163, 74, 0.6);
+  background-color: #22c55e;
 }
 
 .switch input:checked + .slider:before {
   transform: translateX(22px);
 }
 
-/* ========= Botão principal ========= */
+/* Botão com mesmo comprimento dos campos */
 button {
   width: 100%;
+  max-width: 350px;      /* igual aos inputs/selects */
+  margin: 10px auto 0;   /* centralizado */
+  display: block;
   padding: 10px;
-  background: linear-gradient(135deg, #4f46e5, #1d4ed8);
-  color: #f9fafb;
-  border: 1px solid rgba(129, 140, 248, 0.7);
-  border-radius: 999px;
-  font-size: 0.9rem;
-  font-weight: 600;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
   cursor: pointer;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  transition: transform 0.1s ease, box-shadow 0.15s ease, opacity 0.15s ease;
-  margin-top: 4px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.85);
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  opacity: 0.96;
-  transform: translateY(-1px);
+  background-color: #0056b3;
 }
 
-button:active {
-  transform: translateY(1px) scale(0.99);
-}
-
-/* ========= Modal / Pop-up ========= */
+/* Modal / Pop-up */
 .modal {
-  display: none;
+  display: none; /* Escondido por padrão */
   position: fixed;
-  inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.65);
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
 }
 
 .modal-content {
-  background: linear-gradient(135deg, rgba(15, 23, 42, 0.96), rgba(30, 64, 175, 0.9));
-  margin: 30% auto;
-  padding: 18px 20px;
-  border-radius: 14px;
-  width: 92%;
-  max-width: 420px;
+  background-color: #fff;
+  margin: 15% auto;
+  padding: 20px 30px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
   text-align: center;
   position: relative;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .close-button {
-  color: #c7d2fe;
+  color: #aaa;
   position: absolute;
-  top: 8px;
-  right: 14px;
-  font-size: 24px;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
   font-weight: bold;
   cursor: pointer;
 }
 
-#resultado-popup {
-  font-size: 1rem;
-  font-weight: 700;
-  color: #e5e7eb;
-  margin-top: 10px;
+.close-button:hover,
+.close-button:focus {
+  color: #000;
+  text-decoration: none;
 }
 
-.error-text {
-  color: #f97373;
-}
-
-/* ========= Rodapé ========= */
 footer {
   text-align: center;
-  margin-top: 8px;
-  color: #e5e7eb;
-  font-size: 0.8rem;
-  opacity: 0.8;
+  margin-top: 30px;
+  color: #ddd;
+  font-size: 0.85rem;
 }
 
-/* ========= Melhorias em telas maiores ========= */
-@media (min-width: 768px) {
-  body {
-    padding: 32px 24px;
-  }
-
-  h1 {
-    font-size: 1.9rem;
-    margin-bottom: 22px;
-  }
-
-  .card {
-    padding: 18px 18px;
-    margin-bottom: 18px;
-  }
-
-  button {
-    font-size: 0.95rem;
-  }
-
-  .modal-content {
-    margin: 18% auto;
-    padding: 22px 26px;
-  }
+#resultado-popup {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #007bff;
 }
