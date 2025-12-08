@@ -1,4 +1,10 @@
 /* ========= Layout geral ========= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   font-family: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   background: radial-gradient(circle at top, #2e4cff 0, #141628 35%, #050712 100%);
@@ -11,8 +17,9 @@ body {
 }
 
 .container {
-  max-width: 760px;
+  max-width: 960px;
   width: 100%;
+  margin: 0 auto;
 }
 
 /* ========= Títulos ========= */
@@ -190,8 +197,8 @@ input[type="number"]:focus {
 }
 
 .switch input:checked + .slider {
-  background: radial-gradient(circle at 10% 0%, #228fc5, #1687a3 40%, #06364e 100%);
-  box-shadow: 0 0 18px rgba(34, 102, 197, 0.6), inset 0 0 0 1px rgba(22, 95, 163, 0.6);
+  background: radial-gradient(circle at 10% 0%, #22c55e, #16a34a 40%, #064e3b 100%);
+  box-shadow: 0 0 18px rgba(34, 197, 94, 0.6), inset 0 0 0 1px rgba(22, 163, 74, 0.6);
 }
 
 .switch input:checked + .slider:before {
@@ -285,4 +292,64 @@ footer {
   color: #e5e7eb;
   font-size: 0.85rem;
   opacity: 0.8;
+}
+
+/* ========= Responsividade ========= */
+@media (max-width: 768px) {
+  body {
+    align-items: stretch;
+    padding: 20px 12px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .card {
+    padding: 16px 16px;
+    margin-bottom: 16px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+  }
+
+  label {
+    font-size: 0.85rem;
+  }
+
+  input[type="number"],
+  .select-wrapper select {
+    font-size: 0.9rem;
+    padding: 9px 10px;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .modal-content {
+    margin: 30% auto;
+    padding: 18px 20px;
+    width: 92%;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 16px 10px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .toggle-container {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .card {
+    padding: 14px 12px;
+  }
 }
