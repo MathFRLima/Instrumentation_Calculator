@@ -23,57 +23,63 @@ function getGrandezaInfo() {
   }
 }
 
-// Atualiza textos e unidades
+// Atualiza textos e placeholders de unidade
 function atualizarInterface() {
   const { nome, unidade } = getGrandezaInfo();
 
+  // Labels
   document.getElementById('label-g-min').innerText = nome;
   document.getElementById('label-g-max').innerText = nome;
   document.getElementById('label-g-atual').innerText = nome;
 
-  document.getElementById('unit-g-min').innerText = unidade;
-  document.getElementById('unit-g-max').innerText = unidade;
-  document.getElementById('unit-g-atual').innerText = unidade;
+  // Placeholders com unidade
+  const gMinInput = document.getElementById('g-min');
+  const gMaxInput = document.getElementById('g-max');
+  const gAtualInput = document.getElementById('g-atual');
+
+  if (gMinInput) gMinInput.placeholder = `mínimo (${unidade})`;
+  if (gMaxInput) gMaxInput.placeholder = `máximo (${unidade})`;
+  if (gAtualInput) gAtualInput.placeholder = `atual (${unidade})`;
 }
 
-// Atualiza limites do sinal padronizado
+// Atualiza limites do sinal padronizado e placeholder da corrente/tensão
 function atualizarSinalPadronizado() {
   const tipoSinal = document.getElementById('tipo-sinal').value;
   const cMinInput = document.getElementById('c-min');
   const cMaxInput = document.getElementById('c-max');
-  const unitCorrente = document.getElementById('unit-c-atual');
   const labelCorrente = document.getElementById('label-c-atual');
+  const cAtualInput = document.getElementById('c-atual');
 
   switch (tipoSinal) {
     case '4-20':
       cMinInput.value = 4;
       cMaxInput.value = 20;
-      unitCorrente.innerText = 'mA';
       labelCorrente.innerText = 'Corrente';
+      if (cAtualInput) cAtualInput.placeholder = 'Corrente atual (mA)';
       break;
     case '0-20':
       cMinInput.value = 0;
       cMaxInput.value = 20;
-      unitCorrente.innerText = 'mA';
       labelCorrente.innerText = 'Corrente';
+      if (cAtualInput) cAtualInput.placeholder = 'Corrente atual (mA)';
       break;
     case '1-5':
       cMinInput.value = 1;
       cMaxInput.value = 5;
-      unitCorrente.innerText = 'V';
       labelCorrente.innerText = 'Tensão';
+      if (cAtualInput) cAtualInput.placeholder = 'Tensão atual (V)';
       break;
     case '0-10':
       cMinInput.value = 0;
       cMaxInput.value = 10;
-      unitCorrente.innerText = 'V';
       labelCorrente.innerText = 'Tensão';
+      if (cAtualInput) cAtualInput.placeholder = 'Tensão atual (V)';
       break;
     default:
       cMinInput.value = '';
       cMaxInput.value = '';
-      unitCorrente.innerText = 'mA ou V';
       labelCorrente.innerText = 'Corrente / Tensão';
+      if (cAtualInput) cAtualInput.placeholder = 'Valor atual';
   }
 }
 

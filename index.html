@@ -16,12 +16,12 @@
       <div class="input-group">
         <label for="tipo-grandeza">Grandeza medida</label>
         <div class="select-wrapper">
-            <select id="tipo-grandeza" onchange="atualizarInterface()">
-                <option value="pressao">Pressão</option>
-                <option value="temperatura">Temperatura</option>
-                <option value="nivel">Nível</option>
-                <option value="vazao">Vazão</option>
-            </select>
+          <select id="tipo-grandeza" onchange="atualizarInterface()">
+            <option value="pressao">Pressão</option>
+            <option value="temperatura">Temperatura</option>
+            <option value="nivel">Nível</option>
+            <option value="vazao">Vazão</option>
+          </select>
         </div>
       </div>
 
@@ -29,14 +29,13 @@
       <div class="input-group">
         <label for="tipo-sinal">Sinal padronizado</label>
         <div class="select-wrapper">
-            <select id="tipo-sinal" onchange="atualizarSinalPadronizado()">
-                <option value="4-20">4 a 20 mA</option>
-                <option value="0-20">0 a 20 mA</option>
-                <option value="1-5">1 a 5 V</option>
-                <option value="0-10">0 a 10 V</option>
-            </select>
+          <select id="tipo-sinal" onchange="atualizarSinalPadronizado()">
+            <option value="4-20">4 a 20 mA</option>
+            <option value="0-20">0 a 20 mA</option>
+            <option value="1-5">1 a 5 V</option>
+            <option value="0-10">0 a 10 V</option>
+          </select>
         </div>
-
       </div>
 
       <!-- Range da grandeza -->
@@ -45,7 +44,6 @@
           <span id="label-g-min">Grandeza</span> mínima
         </label>
         <input type="number" id="g-min" step="0.01">
-        <small class="unit-label"><span id="unit-g-min">unid</span></small>
       </div>
 
       <div class="input-group">
@@ -53,7 +51,6 @@
           <span id="label-g-max">Grandeza</span> máxima
         </label>
         <input type="number" id="g-max" step="0.01">
-        <small class="unit-label"><span id="unit-g-max">unid</span></small>
       </div>
 
       <!-- Campos escondidos para limites do sinal -->
@@ -80,14 +77,14 @@
           <span id="label-g-atual">Grandeza</span> atual
         </label>
         <input type="number" id="g-atual" step="0.01">
-        <small class="unit-label"><span id="unit-g-atual">unid</span></small>
       </div>
 
       <!-- Campo que aparece quando for calcular grandeza -->
       <div class="input-group" id="grupo-corrente-atual" style="display: none;">
-        <label for="c-atual"><span id="label-c-atual">Corrente / Tensão</span> atual</label>
+        <label for="c-atual">
+          <span id="label-c-atual">Corrente / Tensão</span> atual
+        </label>
         <input type="number" id="c-atual" step="0.01">
-        <small class="unit-label"><span id="unit-c-atual">mA ou V</span></small>
       </div>
 
       <button id="btn-calcular" onclick="executarCalculo()">
